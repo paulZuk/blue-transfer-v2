@@ -1,0 +1,150 @@
+#mainNav {
+  @media(max-width:992px) {
+    font-size: 22px;
+  }
+    font-family: $OpenSansCondensed;
+    font-size: 18px;
+    margin-bottom: 0;
+    border-bottom: 1px solid fade-out($detail, .4);
+    background-color: black;
+    .navbar-toggler {
+      font-size: 14px;
+      padding: 11px;
+      color: white;
+      border: 1px solid white;
+    }
+    .navbar-brand {
+      @media(max-width:992px) {
+        .small-logo {
+          background-image: url('../img/bt_logo_line.svg');
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 200px;
+          height: 50px;
+        }
+      }
+      .logo {
+        background-image: url('../img/bt_logo.svg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 80px;
+      }
+    }
+    a {
+      color: white;
+    }
+    .navbar-nav {
+      .nav-item {
+        display: flex;
+        align-items: center;
+        -webkit-transition: background 0.3s ease-in-out;
+        -moz-transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-in-out;
+        padding: 0 10px;
+        .nav-link {
+          &:before, &:after {
+            display: inline-block;
+            opacity: 0;
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+            -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+            transition: transform 0.3s, opacity 0.2s;
+          }
+          &:before {
+            padding: 0 5px;
+            content: '-';
+            color:$detail;
+            -webkit-transform: translateX(20px);
+            -moz-transform: translateX(20px);
+            transform: translateX(20px);
+          }
+          &:after {
+            padding: 0 5px;
+            content: '-';
+            color: $detail;
+            -webkit-transform: translateX(-20px);
+            -moz-transform: translateX(-20px);
+            transform: translateX(-20px);
+          }
+  
+          &:hover {
+            &:before, &:after {
+              opacity: 1;
+              -webkit-transform: translateX(0px);
+              -moz-transform: translateX(0px);
+              transform: translateX(0px);
+            }
+          }
+        }
+        // &:hover {
+        //   color: fade(white, 80%);
+        //   outline: none;
+        //   background-color: transparent;
+        // }
+        // &:active,
+        // &:focus {
+        //   outline: none;
+        //   background-color: transparent;
+        // }
+      }
+    }
+    @media(max-width:992px) {
+      .nav-logo{
+        display: none;
+      }
+      .nav-item {
+        justify-content: center;
+      }
+    }
+    @media(min-width:992px) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+  
+      -webkit-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+      -moz-transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+      transition: background 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s;
+      letter-spacing: 1px;
+  
+      border-bottom: none;
+      background: transparent;
+      &.navbar-shrink {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: rgba(0,0,0,.9);
+      }
+      .nav-link.active {
+        outline: none;
+        // background-color: rgba(white, .3);
+        color:$detail;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+    .social-icons {
+      width: 15%;
+      [class*="-icon"] {
+        margin: 0 10px;
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+      }
+      .facebook-icon {
+        background-image: url('../img/icons.png');
+        background-position: 0 -20px;
+        background-size: 80px;
+      }
+      .twitter-icon {
+        background-image: url('../img/icons.png');
+        background-position: 0 0;
+        background-size: 80px;
+      }
+      .instagram-icon {
+        background-image: url('../img/icons.png');
+        background-position: 0 -40px;
+        background-size: 80px;
+      }
+    }
+  }

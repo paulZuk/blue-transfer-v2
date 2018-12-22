@@ -1,0 +1,47 @@
+.member__photo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .photo {
+        width: 100%;
+        height: 80%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: grayscale(100%);
+        transition: filter 2s, transform 1s;
+        &:hover {
+          filter:grayscale(0) !important;
+          transform: scale(1.05);
+          z-index: 2;
+        }
+    }
+    .one {
+        background-image: url('../img/member_marian.png');
+    }
+    .two {
+        background-image: url('../img/member_monika.png');
+    }
+    .three {
+        background-image: url('../img/member_jakub.png');
+    }
+    .four {
+        background-image: url('../img/member_janusz.png');
+    }
+}
+.member__text {
+    h2 {
+        padding:20px 0;
+        text-transform: none;
+        color: $detail;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .profession {
+        color:$detail;
+    }
+    .description {
+        text-align: justify !important;
+        margin-bottom: 150px;
+    }
+}

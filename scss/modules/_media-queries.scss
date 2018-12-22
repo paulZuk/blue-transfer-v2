@@ -1,0 +1,28 @@
+@mixin mobile-landscape {
+    @media screen and(max-width: 800px) and (orientation: landscape) {
+      @content;
+    }
+  }
+  @mixin media-tablet {
+    @media screen and (min-width:800px ){
+      @content;
+    }
+  }
+  @mixin media-laptop {
+    @media screen and (min-width: 1200px) and (device-aspect-ratio: 16/9),
+            screen and (min-width: 1200px) and (device-aspect-ratio: 16/10){
+      @content;
+    }
+  }
+  @mixin media-desktop {
+    @media screen and (min-width:1500px) and (device-aspect-ratio: 16/9),
+            screen and (min-width:1500px) and (device-aspect-ratio: 16/10){
+      @content;
+    }
+  }
+  @mixin media-desktop-43 {
+    @media screen and (min-width:1024px) and (device-aspect-ratio: 4/3){
+      @content;
+    }
+  }
+  

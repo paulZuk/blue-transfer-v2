@@ -1,0 +1,15 @@
+.cms-bar {
+    display: none;
+    width: 100%;
+    position: fixed;
+    height: 30px;
+    background-color: $detail;
+    bottom: 0;
+    z-index: 999;
+    &.visible {
+        display: block;
+    }
+    button {
+        width:100%;
+    }
+}

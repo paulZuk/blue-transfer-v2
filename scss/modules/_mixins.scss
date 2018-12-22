@@ -1,0 +1,375 @@
+@mixin hamburger-icon {
+
+    $color-icon: white;
+  
+    .button {
+      float: left;
+      padding: 15px;
+      z-index: 2;
+  
+      .hamburger {
+        width: 24px;
+        height: 3px;
+        background-color: $color-icon;
+        position: relative;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        transition: background-color 0.3s ease-in-out;
+        z-index: 1;
+  
+        &::before, &::after {
+          position: absolute;
+          content: "";
+          width: 24px;
+          height: 3px;
+          background-color: $color-icon;
+        }
+  
+        &::before {
+          top: -8px;
+          transition: 0.3s ease-in-out;
+        }
+  
+        &::after {
+          top:8px;
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+  
+    .button.active {
+  
+      .hamburger{
+        transition: background-color 0.3s ease-in-out, transform 0.8s ease-in-out;
+        transform: rotate(180deg);
+        background-color: transparent;
+  
+        &::before {
+          transition: 0.3s ease-in-out;
+          -webkit-transform: translateY(8px) rotate(-45deg);
+        }
+  
+        &::after {
+          transition: 0.3s ease-in-out;
+          -webkit-transform: translateY(-8px) rotate(45deg);
+        }
+      }
+    }
+  }
+  @mixin clearFix {
+    &::after {
+      content: '';
+      display:table;
+      clear: both;
+    }
+  }
+  @mixin arrowNext {
+    .next-button {
+      position: absolute;
+      top:0;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-left: 1px solid white;
+      border-bottom: 1px solid white;
+      -webkit-transform: rotate(-45deg) translateX(-50%) rotateZ(360deg);
+      transform: rotate(-45deg) translateX(-50%) rotateZ(360deg);
+      -webkit-animation: moveDown 2s infinite;
+      animation: moveDown 2s infinite;
+      opacity: 0;
+      box-sizing: border-box;
+      backface-visibility: hidden;
+  
+      &:nth-of-type(1) {
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+      }
+      &:nth-of-type(2) {
+        top: 9px;
+        -webkit-animation-delay: .15s;
+        animation-delay: .15s;
+      }
+      &:nth-of-type(3) {
+        top: 18px;
+        -webkit-animation-delay: .3s;
+        animation-delay: .3s;
+      }
+      @keyframes moveDown {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @-webkit-keyframes moveDown {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  @mixin media-player {
+    .media-player {
+      padding-top: 20px;
+      background-color: rgba(0,0,0,.4);
+      padding-bottom: $section-spacing;
+    }
+    .media-player__controls {
+      width: 100%;
+      height: 250px;
+    }
+    .now-playing {
+      padding: 20px 0;
+      height:140px;
+  
+      .now-playing__header {
+        display: flex;
+        height:50px;
+        justify-content: center;
+        align-items: center;
+  
+        p {
+          width:70%;
+          font-size: 26px;
+          font-weight:300;
+          color: white;
+  
+          @include media-desktop {
+            font-size: 30px;
+          }
+        }
+      }
+      .now-playing__title {
+        @extend .now-playing__header;
+        p {
+          right:100px;
+          width:70%;
+          font-size: 24px;
+          font-weight:300;
+  
+          @include media-desktop {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    .progress {
+      display: flex;
+      width:100%;
+      height:20px;
+      justify-content: center;
+      align-items: center;
+  
+      .timeline {
+        position: relative;
+        width: 70%;
+        height:2px;
+        border-radius: 10px;
+        background-color: $detail;
+  
+        .playhead {
+          position: absolute;
+          top:50%;
+          transform: translateY(-50%);
+          width: 5px;
+          height:15px;
+          border-radius: 10px;
+          background-color: white;
+        }
+      }
+    }
+    .buttons {
+      width:100%;
+      height:50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    %button {
+      margin: 0 30px;
+      background-size: cover;
+      width:30px;
+      height:30px;
+      display: inline-block;
+    }
+    .play {
+      @extend %button;
+      background-image: url("../img/icons.png");
+      background-size: 120px;
+      background-repeat: no-repeat;
+      background-position: 0 -150px;
+  
+      &:hover {
+        background-position: -30px -150px;
+      }
+    }
+    .pause {
+      @extend %button;
+      background-image: url("../img/icons.png");
+      background-size: 120px;
+      background-repeat: no-repeat;
+      background-position: 0 -180px;
+  
+      &:hover {
+        background-position: -30px -180px;
+      }
+    }
+    .prev {
+      @extend %button;
+      width:15px;
+      height:15px;
+      background-image: url("../img/icons.png");
+      background-size: 60px;
+      background-repeat: no-repeat;
+      background-position: 0 -60px;
+      @include moz {
+        background-position: 0 -60px;
+      }
+  
+      &:hover {
+        background-position: -15px -60px;
+        @include moz {
+          background-position: -15px -60px;
+        }
+      }
+    }
+    .next {
+      @extend %button;
+      width:15px;
+      height:15px;
+      background-size: 60px;
+      background-repeat: no-repeat;
+      background-image: url("../img/icons.png");
+      background-position: 0 -45px;
+  
+      &:hover {
+        background-position: -15px -45px;
+      }
+    }
+    .media-player__playlist {
+      margin: 0 auto;
+      width:90%;
+  
+      @include media-breakpoint-up(lg) {
+        width:70%;
+      }
+  
+      .playlist {
+        line-height: 30px;
+        list-style-type: none;
+  
+        [id*='track'] {
+          font-size: 18px;
+          margin-bottom: 3px;
+          padding:2px;
+          width:100%;
+  
+          @include media-breakpoint-up(lg) {
+            font-size: 20px;
+          }
+  
+          @include media-desktop {
+            font-size: 24px;
+          }
+  
+          &:hover {
+            background-color: rgba(0,193,235,.8);
+            cursor: pointer;
+          }
+          .title {
+            width:70%;
+            float: left;
+          }
+          .duration {
+            float:right;
+          }
+          @include clearFix;
+        }
+        .active {
+          background-color: rgba(0,193,235,0.8) ;
+        }
+      }
+    }
+  }
+  @mixin loadingScreen {
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width:100%;
+      height:100vh;
+      background-color: black;
+      z-index: 9999;
+  
+      @keyframes lds-ripple {
+        0% {
+          top: 96px;
+          left: 96px;
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          top: 18px;
+          left: 18px;
+          width: 156px;
+          height: 156px;
+          opacity: 0;
+        }
+      }
+      @-webkit-keyframes lds-ripple {
+        0% {
+          top: 96px;
+          left: 96px;
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          top: 18px;
+          left: 18px;
+          width: 156px;
+          height: 156px;
+          opacity: 0;
+        }
+      }
+      .lds-ripple {
+        position: relative;
+      }
+      .lds-ripple div {
+        box-sizing: content-box;
+        position: absolute;
+        border-width: 4px;
+        border-style: solid;
+        opacity: 1;
+        border-radius: 50%;
+        -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+      .lds-ripple div:nth-child(1) {
+        border-color: #00C1FF;
+      }
+      .lds-ripple div:nth-child(2) {
+        border-color: #ffffff;
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+      }
+      .lds-ripple {
+        width: 200px !important;
+        height: 200px !important;
+        -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+        transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+      }
+    }
+  }
