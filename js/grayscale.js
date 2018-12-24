@@ -1,5 +1,14 @@
+$(() => {
+    //Hide loading screen
+    $(window).on('load',function() {
+        $('.loading').find('div').fadeOut(1200,function() {
+            $(window).scrollTop(0);
+            $('.loading').fadeOut(600, function() {
+                $('body').removeClass('loadingScreen');
+            })
+        });
+    })
 
-(function ($) {
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -254,11 +263,9 @@
         }
         alert('Podano złe hasło!!!');
     };
-
     $(() => {
         getData();
     });
-
     const closeEdit = () => {
         $('[data-title]').removeAttr('contenteditable');
         $('.cms-bar').removeClass('visible');
@@ -275,5 +282,6 @@
     $('#logo').on('dblclick', () => {
         setEditable();
     });
-}(jQuery)); // End of use strict
+});
+
 
