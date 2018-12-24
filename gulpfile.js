@@ -105,6 +105,7 @@ gulp.task('default', ['css', 'js', 'vendor']);
 // Configure the browserSync task
 gulp.task('browserSync', function() {
   browserSync.init({
+    browser: "google chrome",
     server: {
       baseDir: "./"
     }
