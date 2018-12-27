@@ -630,6 +630,34 @@ a:focus, a:hover {
   width: 100%;
 }
 
+.gallery-section {
+  height: 600px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.gallery-section .photo {
+  margin: 0 auto;
+  width: 200px;
+  height: 230px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../img/gallery/2.jpg");
+  z-index: 2;
+  filter: grayscale(100%);
+}
+
+.gallery-section .photo .frame {
+  top: -2px;
+  left: -2px;
+  position: relative;
+  width: 203px;
+  height: 234px;
+  background-size: cover;
+  background-image: url("../img/gallery/gallery-frame.png");
+}
+
 .interval {
   background-image: url("../img/interval.jpg");
   background-attachment: fixed;

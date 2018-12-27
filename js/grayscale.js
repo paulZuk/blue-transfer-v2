@@ -284,6 +284,27 @@ $(() => {
     $('#logo').on('dblclick', () => {
         setEditable();
     });
+
+    //Gallery 
+
+    //set initial transform value
+
+    const randomValue = (from, to) => {
+        let random = Math.floor(Math.random() * to) + from; 
+        random *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+        return random;
+    }
+    const frame = $('.photo').toArray();
+    frame.forEach(elem => {
+        $(elem).css('transform',`rotate(${randomValue(-45,45)}deg)`);
+    })
+    $(frame).click((evt) => {
+        // $(evt.target.parentElement).css('transform','rotate(0)');
+        // $(evt.target.parentElement).css('transform','scale(2.5)');
+        // $(evt.target.parentElement).css('z-index','999');
+        
+    })
+
 });
 
 
