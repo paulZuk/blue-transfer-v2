@@ -30,11 +30,20 @@
         background-position: center;
         background-repeat: no-repeat;
         width: 200px;
-        height: 80px;
+        height: 110px;
+        transition: height .5s ease-in-out;
+
+        &.active {
+          height: 90px;
+        }
       }
     }
     a {
       color: white;
+      font-size: 20px;
+      @media(min-width:992px) {
+        font-size: 20px;
+      }
     }
     .navbar-nav {
       .nav-item {

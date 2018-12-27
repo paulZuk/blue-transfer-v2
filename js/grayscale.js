@@ -16,7 +16,7 @@ $(() => {
             target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
             if (target.length) {
                 $('html, body').animate({
-                    scrollTop: (target.offset().top - 48),
+                    scrollTop: (target.offset().top - 127),
                 }, 1000, 'easeInOutExpo');
                 return false;
             }
@@ -60,10 +60,12 @@ $(() => {
 
     // Collapse Navbar
     const navbarCollapse = function () {
-        if ($('#mainNav').offset().top > 100) {
+        if ($('#mainNav').offset().top > 50) {
             $('#mainNav').addClass('navbar-shrink');
+            $('#mainNav').find('.logo').addClass('active');
         } else {
             $('#mainNav').removeClass('navbar-shrink');
+            $('#mainNav').find('.logo').removeClass('active');
         }
     };
     // Collapse now if page is not at top
