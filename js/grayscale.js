@@ -16,7 +16,7 @@ $(() => {
             target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
             if (target.length) {
                 $('html, body').animate({
-                    scrollTop: (target.offset().top - 127),
+                    scrollTop: (target.offset().top - 87),
                 }, 1000, 'easeInOutExpo');
                 return false;
             }
@@ -55,7 +55,7 @@ $(() => {
     // Activate scrollspy to add active class to navbar items on scroll
     $('body').scrollspy({
         target: '#mainNav',
-        offset: 54,
+        offset: 87,
     });
 
     // Collapse Navbar
@@ -288,23 +288,75 @@ $(() => {
     //Gallery 
 
     //set initial transform value
-
-    const randomValue = (from, to) => {
+    const getGalleryPhotos = () => {
+        return $('.gallery-photo');
+    }
+    const randomRotateValue = (from, to) => {
         let random = Math.floor(Math.random() * to) + from; 
         random *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
         return random;
+    };
+    const createPhotoArray = photos => {
+        const photoArray = [];
+        for (let i = 0; i < photos.length; i++) {
+            photoArray.push(i+1);
+        }
+        return photoArray.sort((a, b)=> 0.5 - Math.random());
     }
-    const frame = $('.photo').toArray();
-    frame.forEach(elem => {
-        $(elem).css('transform',`rotate(${randomValue(-45,45)}deg)`);
-    })
-    $(frame).click((evt) => {
-        // $(evt.target.parentElement).css('transform','rotate(0)');
-        // $(evt.target.parentElement).css('transform','scale(2.5)');
-        // $(evt.target.parentElement).css('z-index','999');
-        
-    })
+    const setGalleryPhotos = () => {
+        const frame = getGalleryPhotos().toArray();
+        const photoArray = createPhotoArray(frame);
 
+        for (let i = 0; i < frame.length; i++) {
+            $(frame[i]).css({
+                'transform': `rotate(${randomRotateValue(-35,35)}deg)`,
+                'background-image': `url(../img/gallery/${photoArray[i]}.jpg)`,
+            });
+        }
+    }
+    const onEnterPhoto = (evt) => {
+        $(evt.target).addClass('hover');
+    }
+    const onLeavePhoto = (evt) => {
+        $(evt.target).removeClass('hover');
+    }
+    const setClickEvent = () => {
+        const photos = getGalleryPhotos();
+        photos.on('click', onClickPhoto);
+    }
+    const setOnEnterEvent = () => {
+        const photos = getGalleryPhotos();
+        photos.on('mouseenter', onEnterPhoto);
+    }
+    const offOnEnterEvent = () => {
+        const photos = getGalleryPhotos();
+        photos.off('mouseenter', onEnterPhoto);
+    }
+    const setOnLeaveEvent = () => {
+        const photos = getGalleryPhotos();
+        photos.on('mouseleave', onLeavePhoto);
+    }
+    const resetPhotos = () => {
+        const photos = getGalleryPhotos();
+        photos.removeClass('active');
+        setOnEnterEvent();
+    }
+    const onClickPhoto = (evt) => {
+        const isActive = $(evt.target).hasClass('active');
+        resetPhotos();
+        if(!isActive) {
+            $(evt.target)
+                .addClass('active')
+                .removeClass('hover');
+
+            offOnEnterEvent();
+            return;
+        }
+    }
+    setOnEnterEvent();
+    setOnLeaveEvent();
+    setClickEvent();
+    setGalleryPhotos();
 });
 
 

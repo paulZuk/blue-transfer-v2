@@ -188,7 +188,7 @@ a:focus, a:hover {
 }
 
 #mainNav .navbar-brand .logo.active {
-  height: 90px;
+  height: 70px;
 }
 
 #mainNav a {
@@ -636,26 +636,29 @@ a:focus, a:hover {
   padding-bottom: 150px;
 }
 
-.gallery-section .photo {
+.gallery-section .gallery-photo {
   margin: 0 auto;
   width: 200px;
   height: 230px;
   position: relative;
   background-size: cover;
   background-position: center;
-  background-image: url("../img/gallery/2.jpg");
+  background-image: url("../img/gallery/1.jpg");
   z-index: 2;
-  filter: grayscale(100%);
+  transition: .2s;
 }
 
-.gallery-section .photo .frame {
-  top: -2px;
-  left: -2px;
-  position: relative;
-  width: 203px;
-  height: 234px;
-  background-size: cover;
-  background-image: url("../img/gallery/gallery-frame.png");
+.gallery-section .gallery-photo.active {
+  position: fixed;
+  transform: translate(-50%, -50%) scale(2) rotate(0) !important;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+}
+
+.gallery-section .gallery-photo.hover {
+  transform: scale(1.4) !important;
+  z-index: 3;
 }
 
 .interval {
