@@ -16,7 +16,7 @@ $(() => {
             target = target.length ? target : $(`[name=${this.hash.slice(1)}]`);
             if (target.length) {
                 $('html, body').animate({
-                    scrollTop: (target.offset().top - 87),
+                    scrollTop: (target.offset().top - 106),
                 }, 1000, 'easeInOutExpo');
                 return false;
             }
@@ -55,7 +55,7 @@ $(() => {
     // Activate scrollspy to add active class to navbar items on scroll
     $('body').scrollspy({
         target: '#mainNav',
-        offset: 87,
+        offset: 107,
     });
 
     // Collapse Navbar
@@ -286,77 +286,29 @@ $(() => {
     });
 
     //Gallery 
+    const galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        loop:true,
+        loopedSlides: 8,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
 
-    //set initial transform value
-    const getGalleryPhotos = () => {
-        return $('.gallery-photo');
+    const galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    effect: 'fade',
+    loop:true,
+    loopedSlides: 8,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+        swiper: galleryThumbs
     }
-    const randomRotateValue = (from, to) => {
-        let random = Math.floor(Math.random() * to) + from; 
-        random *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-        return random;
-    };
-    const createPhotoArray = photos => {
-        const photoArray = [];
-        for (let i = 0; i < photos.length; i++) {
-            photoArray.push(i+1);
-        }
-        return photoArray.sort((a, b)=> 0.5 - Math.random());
-    }
-    const setGalleryPhotos = () => {
-        const frame = getGalleryPhotos().toArray();
-        const photoArray = createPhotoArray(frame);
-
-        for (let i = 0; i < frame.length; i++) {
-            $(frame[i]).css({
-                'transform': `rotate(${randomRotateValue(-35,35)}deg)`,
-                'background-image': `url(../img/gallery/${photoArray[i]}.jpg)`,
-            });
-        }
-    }
-    const onEnterPhoto = (evt) => {
-        $(evt.target).addClass('hover');
-    }
-    const onLeavePhoto = (evt) => {
-        $(evt.target).removeClass('hover');
-    }
-    const setClickEvent = () => {
-        const photos = getGalleryPhotos();
-        photos.on('click', onClickPhoto);
-    }
-    const setOnEnterEvent = () => {
-        const photos = getGalleryPhotos();
-        photos.on('mouseenter', onEnterPhoto);
-    }
-    const offOnEnterEvent = () => {
-        const photos = getGalleryPhotos();
-        photos.off('mouseenter', onEnterPhoto);
-    }
-    const setOnLeaveEvent = () => {
-        const photos = getGalleryPhotos();
-        photos.on('mouseleave', onLeavePhoto);
-    }
-    const resetPhotos = () => {
-        const photos = getGalleryPhotos();
-        photos.removeClass('active');
-        setOnEnterEvent();
-    }
-    const onClickPhoto = (evt) => {
-        const isActive = $(evt.target).hasClass('active');
-        resetPhotos();
-        if(!isActive) {
-            $(evt.target)
-                .addClass('active')
-                .removeClass('hover');
-
-            offOnEnterEvent();
-            return;
-        }
-    }
-    setOnEnterEvent();
-    setOnLeaveEvent();
-    setClickEvent();
-    setGalleryPhotos();
+    });
 });
 
 

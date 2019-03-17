@@ -273,9 +273,6 @@ a:focus, a:hover {
     outline: none;
     color: #00C1FF;
   }
-  #mainNav .nav-link.active:hover {
-    color: white;
-  }
 }
 
 #mainNav .social-icons {
@@ -631,34 +628,41 @@ a:focus, a:hover {
 }
 
 .gallery-section {
-  height: 600px;
-  padding-top: 150px;
-  padding-bottom: 150px;
+  margin-top: 100px;
+  height: 800px;
 }
 
-.gallery-section .gallery-photo {
-  margin: 0 auto;
-  width: 200px;
-  height: 230px;
-  position: relative;
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
   background-size: cover;
   background-position: center;
-  background-image: url("../img/gallery/1.jpg");
-  z-index: 2;
-  transition: .2s;
 }
 
-.gallery-section .gallery-photo.active {
-  position: fixed;
-  transform: translate(-50%, -50%) scale(2) rotate(0) !important;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
+.gallery-top {
+  height: 80%;
+  width: 100%;
 }
 
-.gallery-section .gallery-photo.hover {
-  transform: scale(1.4) !important;
-  z-index: 3;
+.gallery-thumbs {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.gallery-thumbs .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
 }
 
 .interval {

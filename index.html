@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -61,7 +62,7 @@
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#about">Galeria</a>
+                <a class="nav-link js-scroll-trigger" href="#gallery">Galeria</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#player">Muzyka</a>
@@ -292,36 +293,32 @@
         </div>
       </div>
     </section>
-
     <section id="gallery" class="gallery-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
+      <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url(./img/gallery/2.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/3.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/4.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/5.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/6.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/7.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/8.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/9.jpg)"></div>
         </div>
-        <div class="row">
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
-          <div class="col-3">
-            <div class="gallery-photo"></div>
-          </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+      </div>
+      <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url(./img/gallery/2.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/3.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/4.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/5.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/6.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/7.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/8.jpg)"></div>
+          <div class="swiper-slide" style="background-image: url(./img/gallery/9.jpg)"></div>
         </div>
       </div>
     </section>
@@ -390,6 +387,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/swiper/js/swiper.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
